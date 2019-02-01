@@ -43,10 +43,8 @@ namespace MegaDesk_3_ToddRhoads
 
         private void button4_Click(object sender, EventArgs e)
         {
-           
-            this.Close();
-        }
 
-      
+            Application.Exit();
+        }
     }
 }

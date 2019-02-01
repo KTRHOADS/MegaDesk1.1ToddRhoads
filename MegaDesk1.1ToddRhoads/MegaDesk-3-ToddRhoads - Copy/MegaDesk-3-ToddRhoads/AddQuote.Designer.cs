@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddQuote));
             this.MaterialCombo = new System.Windows.Forms.ComboBox();
             this.WidthBox = new System.Windows.Forms.TextBox();
             this.DepthBox = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@
             this.MaterialCombo.Name = "MaterialCombo";
             this.MaterialCombo.Size = new System.Drawing.Size(121, 21);
             this.MaterialCombo.TabIndex = 0;
-            
             // 
             // WidthBox
             // 
@@ -63,7 +63,6 @@
             this.WidthBox.Name = "WidthBox";
             this.WidthBox.Size = new System.Drawing.Size(121, 20);
             this.WidthBox.TabIndex = 1;
-            
             // 
             // DepthBox
             // 
@@ -71,7 +70,6 @@
             this.DepthBox.Name = "DepthBox";
             this.DepthBox.Size = new System.Drawing.Size(121, 20);
             this.DepthBox.TabIndex = 2;
-            
             // 
             // drawerNumberBox
             // 
@@ -79,7 +77,6 @@
             this.drawerNumberBox.Name = "drawerNumberBox";
             this.drawerNumberBox.Size = new System.Drawing.Size(121, 20);
             this.drawerNumberBox.TabIndex = 3;
-            
             // 
             // CreateQuote
             // 
@@ -99,7 +96,6 @@
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Surface Material";
-            
             // 
             // label2
             // 
@@ -109,7 +105,6 @@
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Width";
-            
             // 
             // label3
             // 
@@ -119,7 +114,6 @@
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Depth";
-            
             // 
             // label4
             // 
@@ -129,7 +123,7 @@
             this.label4.Size = new System.Drawing.Size(68, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "# of Drawers";
-          
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -139,7 +133,7 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Production Time";
             this.label5.Visible = false;
-            
+            // 
             // normalRadio
             // 
             this.normalRadio.AutoSize = true;
@@ -150,7 +144,6 @@
             this.normalRadio.TabStop = true;
             this.normalRadio.Text = "Normal (14 Days)";
             this.normalRadio.UseVisualStyleBackColor = true;
-           
             // 
             // threeDayRadio
             // 
@@ -163,7 +156,6 @@
             this.threeDayRadio.Text = "3 Days";
             this.threeDayRadio.UseVisualStyleBackColor = true;
             this.threeDayRadio.Visible = false;
-           
             // 
             // fiveDayRadio
             // 
@@ -176,7 +168,6 @@
             this.fiveDayRadio.Text = "5 Days";
             this.fiveDayRadio.UseVisualStyleBackColor = true;
             this.fiveDayRadio.Visible = false;
-          
             // 
             // rushButton
             // 
@@ -199,7 +190,6 @@
             this.sevenDayRadio.Text = "7 Days";
             this.sevenDayRadio.UseVisualStyleBackColor = true;
             this.sevenDayRadio.Visible = false;
-          
             // 
             // label6
             // 
@@ -209,7 +199,6 @@
             this.label6.Size = new System.Drawing.Size(82, 13);
             this.label6.TabIndex = 17;
             this.label6.Text = "Customer Name";
-           
             // 
             // customerNameBox
             // 
@@ -217,7 +206,6 @@
             this.customerNameBox.Name = "customerNameBox";
             this.customerNameBox.Size = new System.Drawing.Size(121, 20);
             this.customerNameBox.TabIndex = 18;
-           
             // 
             // AddQuote
             // 
@@ -241,6 +229,7 @@
             this.Controls.Add(this.DepthBox);
             this.Controls.Add(this.WidthBox);
             this.Controls.Add(this.MaterialCombo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddQuote";
             this.Text = "Add Quote";
             this.ResumeLayout(false);

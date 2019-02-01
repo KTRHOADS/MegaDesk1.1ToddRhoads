@@ -136,7 +136,7 @@
             this.Controls.Add(this.MaterialCombo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SearchQuotes";
-            this.Text = "Search Quotes";
+            this.Text = "SearchQuotes";
             this.ResumeLayout(false);
 
         }
