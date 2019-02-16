@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 
 
@@ -43,10 +44,15 @@ namespace MegaDesk_3_ToddRhoads
 
                 deskQuotes[i].Date = dateOnly.ToString("MM/dd/yyyy") ;
                 var deskLine = Newtonsoft.Json.JsonConvert.SerializeObject(deskQuotes[i].Desk);
-                System.IO.File.AppendAllText(@"deskQuote.json", deskLine);
+               
                 var deskQuoteLine = Newtonsoft.Json.JsonConvert.SerializeObject(deskQuotes[i]);
-                System.IO.File.AppendAllText(@"deskQuote.json", deskQuoteLine);
 
+                using (StreamWriter outputFile = new StreamWriter("deskQuote.json"))
+                {
+                    outputFile.WriteLine(deskLine);
+                    outputFile.WriteLine(deskQuoteLine);
+                    
+                }
 
             }
 
