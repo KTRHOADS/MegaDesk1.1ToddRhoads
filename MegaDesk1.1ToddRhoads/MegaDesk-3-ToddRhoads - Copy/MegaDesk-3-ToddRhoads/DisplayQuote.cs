@@ -47,7 +47,7 @@ namespace MegaDesk_3_ToddRhoads
                
                 var deskQuoteLine = Newtonsoft.Json.JsonConvert.SerializeObject(deskQuotes[i]);
 
-                using (StreamWriter outputFile = new StreamWriter("deskQuote.json"))
+                using (StreamWriter outputFile = new StreamWriter("deskQuote.json", true))
                 {
                     outputFile.WriteLine(deskLine);
                     outputFile.WriteLine(deskQuoteLine);

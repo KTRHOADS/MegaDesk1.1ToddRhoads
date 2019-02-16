@@ -67,7 +67,7 @@
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
+            
             // 
             // CustomerName
             // 
@@ -136,7 +136,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DisplayQuote";
             this.Text = "Display Quote";
-            this.Load += new System.EventHandler(this.DisplayQuote_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 
