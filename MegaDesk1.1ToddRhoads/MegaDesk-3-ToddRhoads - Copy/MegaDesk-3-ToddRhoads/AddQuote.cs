@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MegaDesk_3_ToddRhoads
@@ -49,7 +43,11 @@ namespace MegaDesk_3_ToddRhoads
                 DeskQuote deskQuote = new DeskQuote();
                 Desk desk = new Desk();
                 List<DeskQuote> deskQuotes = Program.DeskQuotes;
-                desk.SurfaceMaterial = MaterialCombo.SelectedItem.ToString();
+                deskQuote.SurfaceMaterial = MaterialCombo.SelectedItem.ToString();
+                desk.Depth = float.Parse(DepthBox.Text);
+                desk.Width = float.Parse(WidthBox.Text);
+
+                deskQuote.Desk = desk;
 
                 if (customerNameBox.Text == "")
                 {
@@ -61,29 +59,29 @@ namespace MegaDesk_3_ToddRhoads
 
                 if (threeDayRadio.Checked)
                 {
-                    desk.ShippingDays = 3;
+                    deskQuote.ShippingDays = 3;
                 }
 
                 else if (fiveDayRadio.Checked)
                 {
-                    desk.ShippingDays = 5;
+                    deskQuote.ShippingDays = 5;
                 }
 
                 else if (sevenDayRadio.Checked)
                 {
-                    desk.ShippingDays = 7;
+                    deskQuote.ShippingDays = 7;
                 }
 
                 else if (normalRadio.Checked)
                 {
-                    desk.ShippingDays = 14;
+                    deskQuote.ShippingDays = 14;
                 }
 
 
                 if ((int.Parse(drawerNumberBox.Text) > 0 && int.Parse(drawerNumberBox.Text) < 8))
                 {
 
-                    desk.DrawerNumber = int.Parse(drawerNumberBox.Text);
+                    deskQuote.DrawerNumber = int.Parse(drawerNumberBox.Text);
                 }
 
                 else
@@ -94,8 +92,7 @@ namespace MegaDesk_3_ToddRhoads
 
 
 
-                desk.Depth = float.Parse(DepthBox.Text);
-                desk.Width = float.Parse(WidthBox.Text);
+              
 
                 if (desk.Width < 24 || desk.Width > 96 || desk.Depth < 12 || desk.Depth > 48)
                 {
@@ -106,8 +103,8 @@ namespace MegaDesk_3_ToddRhoads
                 else
                 {
 
-                    desk.calcualateSurfaceArea();
-                    desk.calculateQuote();
+                    deskQuote.calcualateSurfaceArea();
+                    deskQuote.calculateQuote();
 
 
                     String width;
@@ -124,17 +121,17 @@ namespace MegaDesk_3_ToddRhoads
 
 
                     name = deskQuote.Name;
-                    shippingDay = desk.ShippingDays.ToString();
+                    shippingDay = deskQuote.ShippingDays.ToString();
                     width = desk.Width.ToString();
                     depth = desk.Depth.ToString();
-                    material = desk.SurfaceMaterial;
-                    finalCost = "$" + desk.FinalDeskCost.ToString();
+                    material = deskQuote.SurfaceMaterial;
+                    finalCost = "$" + deskQuote.FinalDeskCost.ToString();
                     date = deskQuote.Date;
                     sb.AppendLine(name + " ," + width + " ," + depth + " ," + material + " ," + shippingDay + ", " + finalCost + "," + date);
                     String filePath = "quotes.txt";
                     File.AppendAllText(filePath, sb.ToString());
 
-                    deskQuote.Desk = desk;
+                   
                     deskQuotes.Add(deskQuote);
                     Program.DeskQuotes = deskQuotes;
 

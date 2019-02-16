@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
+
+
+
 
 namespace MegaDesk_3_ToddRhoads
 {
@@ -16,7 +12,7 @@ namespace MegaDesk_3_ToddRhoads
     {
         public DisplayQuote()
         {
-
+           
             InitializeComponent();
             List<DeskQuote> deskQuotes = Program.DeskQuotes;
             String[] widths = new string[deskQuotes.Count];
@@ -34,16 +30,23 @@ namespace MegaDesk_3_ToddRhoads
             for (int i = 0; i < deskQuotes.Count; i++)
             {
                 names[i] = deskQuotes[i].Name;
-                shippingDays[i] = deskQuotes[i].Desk.ShippingDays.ToString();
+                shippingDays[i] = deskQuotes[i].ShippingDays.ToString();
                 widths[i] = deskQuotes[i].Desk.Width.ToString();
                 depths[i] = deskQuotes[i].Desk.Depth.ToString();
-                surfaceAreas[i] = deskQuotes[i].Desk.SurfaceArea.ToString();
-                materials[i] = deskQuotes[i].Desk.SurfaceMaterial;
-                finalCosts[i] = "$" + deskQuotes[i].Desk.FinalDeskCost.ToString();
+                surfaceAreas[i] = deskQuotes[i].SurfaceArea.ToString();
+                materials[i] = deskQuotes[i].SurfaceMaterial;
+                finalCosts[i] = "$" + deskQuotes[i].FinalDeskCost.ToString();
                 dates[i] = deskQuotes[i].Date;
                 listView.Items.Add(new ListViewItem(new string[] { names[i], widths[i], depths[i], materials[i], shippingDays[i], finalCosts[i], dates[i] }));
-                
-               
+               var tempDate = DateTime.ParseExact(deskQuotes[i].Date, "MMMM dd, yyyy", null);
+                var dateOnly = tempDate.Date;
+
+                deskQuotes[i].Date = dateOnly.ToString("MM/dd/yyyy") ;
+                var deskLine = Newtonsoft.Json.JsonConvert.SerializeObject(deskQuotes[i].Desk);
+                System.IO.File.AppendAllText(@"deskQuote.json", deskLine);
+                var deskQuoteLine = Newtonsoft.Json.JsonConvert.SerializeObject(deskQuotes[i]);
+                System.IO.File.AppendAllText(@"deskQuote.json", deskQuoteLine);
+
 
             }
 
